@@ -15,7 +15,7 @@ if (mutexScriptInProgress) exitWith
 	player globalChat "You are already performing another action.";
 };
 
-if (vehicle player != player) exitWith
+if !(vehicle player isEqualTo player) exitWith
 {
 	titleText ["You can't pick up money while in a vehicle", "PLAIN DOWN", 0.5];
 };
