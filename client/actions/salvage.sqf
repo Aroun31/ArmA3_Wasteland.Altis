@@ -5,7 +5,7 @@
 //	@file Name: salvage.sqf
 //	@file Author: Wiking, AgentRev
 //	@file Created: 27/07/2014 13:04
-
+//	@file edit Aroun LeBriCodeur 24/02/2018
 // Salvaging of vehicle wrecks
 
 #define GET_ONE_TENTH_PRICE(PRICE) ((ceil (((PRICE) / 10) / 5)) * 5)
@@ -33,7 +33,7 @@ _checks =
 	switch (true) do
 	{
 		case (!alive player): { _text = "" };
-		case (vehicle player != player): { _text = "Action failed! You can't do this in a vehicle" };
+		case (!(vehicle player isEqualTo player)): { _text = "Action failed! You can't do this in a vehicle" };
 		case (player distance _object > (sizeOf typeOf _object / 3) max 2): { _text = "Action failed! You are too far away from the object" };
 
 		case (isNull _object): { _text = "The object no longer exists" };
@@ -111,11 +111,11 @@ switch (true) do
 };
 
 private _variant = _vehicle getVariable ["A3W_vehicleVariant", ""];
-if (_variant != "") then { _variant = "variant_" + _variant };
+if !(_variant isEqualTo "") then { _variant = "variant_" + _variant };
 
 // Final money reward is decided from vehicle store price
 {
-	if (_x select 1 == _vehClass && (_variant == "" || {_variant in _x})) exitWith
+	if (_x select 1 isEqualTo _vehClass && (_variant isEqualTo "" || {_variant in _x})) exitWith
 	{
 		_money = GET_ONE_TENTH_PRICE(_x select 2);
 	};
