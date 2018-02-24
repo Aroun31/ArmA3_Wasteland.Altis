@@ -6,7 +6,7 @@
 //	@file Author: [404] Deadbeat, [404] Costlyy, AgentRev
 //	@file Date modified: 07/12/2012 05:19
 //	@file Args:
-
+//	@edit Aroun LeBriCodeur 24/02/2018
 #define PICK_DISTANCE 5
 
 // Check if mutex lock is active.
