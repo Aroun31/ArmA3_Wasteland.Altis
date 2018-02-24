@@ -1,9 +1,11 @@
 // ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
-private ["_old", "_new"];
-_old = _this select 0;
-_new = _this select 1;
+// @edit Aroun LeBriCodeur 24/02/2018
+params[
+    ["_old",objNull,[objNull]],
+    ["_new",objNull,[objNull]]
+];
 
 /*
 if not(isNull _old ) then {
