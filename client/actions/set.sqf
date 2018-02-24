@@ -5,7 +5,7 @@ private ["_new", "_added"];
 _new = [];
 _added = false;
 {
-	if (_x select 0 == _this select 0) then {
+	if (_x select 0 isEqualTo _this select 0) then {
 		_new pushBack _this;
 		_added = true;
 	} else {
