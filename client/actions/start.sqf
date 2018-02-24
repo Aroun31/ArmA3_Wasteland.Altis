@@ -17,7 +17,7 @@ _animation = _this select 1;
 _check = _this select 2;
 _args = _this select 3;
 
-private _isMedicAnim = (_animation == "" || (toLower _animation) find "_medic" != -1);
+private _isMedicAnim = (_animation isEqualTo "" || !((toLower _animation) find "_medic" isEqualTo -1));
 
 _complete = true;
 _start = time;
@@ -36,11 +36,11 @@ waitUntil {
 	private ["_progress", "_result", "_text"];
 	if (_isMedicAnim) then
 	{
-		if ((toLower animationState player) find "_medic" == -1) then
+		if ((toLower animationState player) find "_medic" isEqualTo -1) then
 		{
 			if (isNil "_medicStarted") then
 			{
-				if (!isNil "_medicStopTime" && {diag_tickTime - _medicStopTime >= [1.5, 2.0] select (stance player == "PRONE")}) then
+				if (!isNil "_medicStopTime" && {diag_tickTime - _medicStopTime >= [1.5, 2.0] select (stance player isEqualTo "PRONE")}) then
 				{
 					player playActionNow MEDIC_ACTION;
 					_medicStopTime = nil;
@@ -63,7 +63,7 @@ waitUntil {
 	}
 	else
 	{
-		if (animationState player != _animation) then { [player, _animation] call switchMoveGlobal };
+		if !(animationState player isEqualTo _animation) then { [player, _animation] call switchMoveGlobal };
 	};
 	if not a3w_actions_mutex then {
 		_failed = true;
